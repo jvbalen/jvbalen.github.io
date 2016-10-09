@@ -1,3 +1,3 @@
-# jvbalen.github.io
+# Research page
 
-Personal website, see [jvbalen.github.io](http://jvbalen.github.io/).
+See [jvbalen.github.io](http://jvbalen.github.io/).
