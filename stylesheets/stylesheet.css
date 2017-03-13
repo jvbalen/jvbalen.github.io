@@ -309,7 +309,15 @@ Full-Width Styles
 
 #project_tagline {
   color: #fff;
-  font-size: 24px;
+  font-size: 21px;
+  font-weight: 300;
+  background: none;
+  text-shadow: #111 0px 0px 10px;
+}
+
+#tabs {
+  color: #fff;
+  font-size: 18px;
   font-weight: 300;
   background: none;
   text-shadow: #111 0px 0px 10px;
