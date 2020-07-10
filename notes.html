@@ -34,7 +34,7 @@
     <div id="main_content_wrap" class="outer">
       <section id="main_content" class="inner">
         
-        <p><h5>What a WAV file looks like</h5>
+        <p><h5 id="waveform">What a WAV file looks like</h5>
         <u>2020-07-10</u></p>
 
           <p>When the <a href="https://deepmind.com/blog/article/wavenet-generative-model-raw-audio">Wavenet paper</a> was first published, it was accompanied by a blog post that featured the following helpful gif:</p>
@@ -42,7 +42,7 @@
 
           <p>I'd been noticing that pretty much every other blog post about wavenet, since, re-used the figure. It appears to be helpful in conveying, to people with some experience in machine learning but perhaps not with audio data, how impressively dense audio data actually is. In particular, it suggests that modeling audio in the time domain, shown here (as opposed to time-frequence domain), might just be really difficult.</p>
 
-          <p>Earlier today, <a href="http://ethanhein.com/">Ethan Hein</a> shared on Twitter that he's also using this figure in his teaching.</p>
+          <p>Earlier today, <a href="http://ethanhein.com/">Ethan Hein</a> shared on Twitter that he's also using this figure in his teaching:</p>
           <blockquote class="twitter-tweet"><p lang="en" dir="ltr">This gif is the single most valuable teaching resource I have for explaining how digital audio works. <a href="https://t.co/tLj6kr1wnl">https://t.co/tLj6kr1wnl</a></p>&mdash; Ethan Hein (@ethanhein) <a href="https://twitter.com/ethanhein/status/1281591318582632448?ref_src=twsrc%5Etfw">July 10, 2020</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
           <br>
           <p>However, I thought it might be even more useful if it also reflected that, when audio is digitized, it's not just the time axis that discretized, but also the <b>amplitude</b>. So I made version of the figure that reflects that a little better.</p>
