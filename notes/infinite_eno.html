@@ -35,17 +35,17 @@
       <section id="main_content" class="inner">
 
 
-        <p><h3 id="infinite_eno">Infinite Oblique Strategies</h3>
-        <u>2020-07-14</u></p><p>
+        <h3 id="infinite_eno">Infinite Oblique Strategies</h3><p>
+        <a href='infinite_eno.html' id="post_date">2020-07-14</a></p><p>
 
-          <em>TL;DR I made a bot! It tweets machine-generated "oblique strategies".<br>Go follow it <a href="https://twitter.com/infinite_eno">here</a>.</em></p><p>
+          <em>TL;DR I made a bot that tweets machine-generated "oblique strategies."<br>Go follow it <a href="https://twitter.com/infinite_eno">here</a>.</em></p><p>
 
           <center>
           <img src="../figs/box.jpg", width=480 alt="Box of cards. The top card reads: 'The most important thing is the thing most easily forgotten'"><br>
-          <p id="img_caption" width=480>The original Oblique Strategies (1970)</p><br>
+          <p id="img_caption" width=480>A 2013 edition of Oblique Strategies<br><small>CC-BY-SA Cory Doctorow</small></p>  <!-- &#128247;  -->
           </center>
 
-          Like many others, I've been taking intermittent looks at the rapid growth of <a href="https://github.com/huggingface/transformers">&#129303;&nbsp;Transformers</a>, an open-source machine learning library for sequence modeling and natural language processing. Their easy to use pretrained models, in particular, seem to be helping a lot of people get access to transformer models—the latest shiny hammer in the deep learning toolbox.</p><p>
+          Like many others, I've been taking intermittent looks at the rapid growth of <a href="https://github.com/huggingface/transformers">&#129303;&nbsp;Transformers</a>, an open-source machine learning library for sequence modeling and natural language processing. Their easy-to-use pretrained models, in particular, seem to be helping a lot of people get access to transformer models—the latest shiny hammer in the deep learning toolbox.</p><p>
           
           Wouldn't it be nice to have an excuse to jump on the &#129303;&nbsp;Train and try out their pretrained language models?</p><p>
 
@@ -98,7 +98,7 @@
             <td id="eno">Combine styles and layering</td>
             <td id="eno">Ask the audience to put the pieces together as they go</td>
           </tr></table><p>
-          (These are the best examples, others didn&#x27;t make much sense)</p><p>
+          These are the best examples, others didn&#x27;t make much sense.</p><p>
           I then installed Huggingface's <a href="https://github.com/huggingface/transformers">Transformers</a> library, and tried to do the same with their <a href="https://github.com/huggingface/transformers/blob/master/examples/language-modeling/run_language_modeling.py">language modeling example script</a>. This allowed for experiments with longer prompts and more output. I used the pretrained GPT-2 model, though to be honest, I didn't really compare the results to any other models (I hear you, reviewers...)</p><p>
           Results were initially less interesting but, after trying a few different settings of the temperature parameter, still OK:</p>
           <table><tr>
@@ -141,7 +141,7 @@
 
           To my surprise, some of these generated strategies look like they could be just as helpful as the original, or at least to a sufficiently open-minded person. Perhaps current language models generate stuff that&#x27;s just the right kind of weird? In general, I find generating 'creative material' at this level rather more promising (for fruitful human-computer collaboration) than the more common approach where entire pieces of music or audiofiles are generated. Something to think about.</p><p>
 
-          In any case, I thought some of the results were good to enought to invest a bit of time figuring out how to share these in a more systematic way, and ended up putting together a Twitter bot. I also added in a bit of image composition to make the result more lively. (It struck me that Oblique Strategies–owners really like to photograph their cards on beautiful wooden surfaces. I guess I would do the same? I don't have a set.) Anyway, follow <a href="https://twitter.com/infinite_eno">@infinite_eno</a> on Twitter for hourly obliqueness.</p><p>
+          In any case, I thought some of the results were good to enough to invest a bit of time figuring out how to share these in a more systematic way, and ended up putting together a Twitter bot. I also added in a bit of image composition to make the result more lively. (It struck me that Oblique Strategies–owners really like to photograph their cards on beautiful wooden surfaces. I guess I would do the same? I don't have a set.) Anyway, follow <a href="https://twitter.com/infinite_eno">@infinite_eno</a> on Twitter for hourly obliqueness.</p><p>
 
           For now, it's tweeting both fine-tuned and non-fine-tuned strategies. <b>Many of them are still bad.</b> But hidden between the bad ones shines the occasional true Enoism:</p>
 
@@ -154,7 +154,7 @@
 
           </p><h5 id="177cb63b-9f26-4ed1-9b3c-5e537350311c" class="">Some observations</h5><p>
 
-          I mostly learned that you can go a long way without having to do any fine-tuning, you just need to get the prompts right. On the other hand, this didn&#x27;t suprise me too much, having seen some of the things other people have been able to do. In particular, there's the lists <a href="https://www.janelleshane.com">Janelle Shane</a> has been coming up with, they're as uncanny as they are hilarious. Definitely go follow her if you don't already!</p><p>
+          I mostly learned that you can go a long way without having to do any fine-tuning, you just need to get the prompts right. On the other hand, this didn&#x27;t suprise me <em>too</em> much, having seen some of the things other people have been able to do. In particular, there's the lists <a href="https://www.janelleshane.com">Janelle Shane</a> has been coming up with. They are as uncanny as they are hilarious. Definitely go follow her experiments if you don't already.</p><p>
 
           Some weeks after I started this project, OpenAI published GPT-3. One of their main findings is that a large pre-trained model can effectively adapt to all kinds of unseen contexts and tasks, without fine-tuning. Google's T5 was first hint of this trend a little before GPT-3. <b>With the little bit of experience I now have in not fine-tuning models, I can definitely see this develop further still.</b></p><p>
 
