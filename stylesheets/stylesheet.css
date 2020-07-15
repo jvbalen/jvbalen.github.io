@@ -137,8 +137,8 @@ img {
   position: relative;
   margin: 0 auto;
   max-width: 570px;
-  padding: 5px;
-  margin: 10px 0 10px 0;
+  padding: 5;
+  margin: 10px 0 0px 0;
   border: 1px solid #ebebeb;
 
   box-shadow: 0 0 5px #ebebeb;
@@ -195,6 +195,10 @@ blockquote {
   border-left: 3px solid #bbb;
 }
 
+b {
+  font-weight: bold;
+}
+
 
 ul, ol, dl {
   margin-bottom: 15px
@@ -229,12 +233,14 @@ dl p {
 hr {
   height: 1px;
   margin-bottom: 5px;
-  border: none;
+  border: 0px;
   background: url('../images/bg_hr.png') repeat-x center;
 }
 
 table {
-  border: 1px solid #373737;
+  border: 0px;
+  border-spacing: 15px;
+  border-collapse: separate;
   margin-bottom: 20px;
   text-align: left;
  }
@@ -247,13 +253,31 @@ th {
  }
 
 td {
-  padding: 10px;
-  border: 1px solid #373737;
+  padding: 20px;
+  border: 0px;
  }
 
 form {
   background: #f2f2f2;
-  padding: 20px;
+  padding: 10px;
+}
+
+#img_caption {
+  font-size: 14px;
+  color: #444;
+  text-align: center;
+}
+
+#eno {
+  border-radius: 15px;
+  font-size: 15px;
+  background: #fff;
+  color: #555;
+  width: 40%;
+  height: 100px;
+  vertical-align: middle;
+  text-align: center;
+  box-shadow: 0 0 10px rgba(0,0,0,.1);
 }
 
 /*******************************************************************************
@@ -385,6 +409,10 @@ Small Device Styles
 @media screen and (max-width: 480px) {
   body {
     font-size:14px;
+  }
+
+  #img_caption {
+    font-size: 12px;
   }
 
   #downloads {

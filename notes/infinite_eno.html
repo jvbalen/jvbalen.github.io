@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="description" content="Jan Van Balen : Personal website">
+
+    <link rel="stylesheet" type="text/css" media="screen" href="../stylesheets/stylesheet.css">
+
+    <title>Jan Van Balen</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <!-- <a id="forkme_banner" href="https://github.com/jvbalen">View on GitHub</a> -->
+
+          <h4 id="project_tagline">Jan Van Balen</h4>
+          <h6 id="tabs">
+            <a href="../index.html">research</a> &middot;
+            <a href="../notes.html">notes</a> &middot;
+            <a href="../thesis.html">thesis</a> &middot;
+            <a href="../press.html">press</a> &middot;
+            <a href="../talks.html">talks</a> &middot;
+            <a href="https://github.com/jvbalen" target="_blank">github</a>
+          </h6>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+
+
+        <p><h3 id="infinite_eno">Infinite Oblique Strategies</h3>
+        <u>2020-07-14</u></p><p>
+
+          <em>TL;DR I made a bot! It tweets machine-generated "oblique strategies".<br>Go follow it <a href="https://twitter.com/infinite_eno">here</a>.</em></p><p>
+
+          <center>
+          <img src="../figs/box.jpg", width=480 alt="Box of cards. The top card reads: 'The most important thing is the thing most easily forgotten'"><br>
+          <p id="img_caption" width=480>The original Oblique Strategies (1970)</p><br>
+          </center>
+
+          Like many others, I've been taking intermittent looks at the rapid growth of <a href="https://github.com/huggingface/transformers">&#129303;&nbsp;Transformers</a>, an open-source machine learning library for sequence modeling and natural language processing. Their easy to use pretrained models, in particular, seem to be helping a lot of people get access to transformer models—the latest shiny hammer in the deep learning toolbox.</p><p>
+          
+          Wouldn't it be nice to have an excuse to jump on the &#129303;&nbsp;Train and try out their pretrained language models?</p><p>
+
+          <b>Here's how I used GPT-2 to generate infinite Brian Eno wisdom.</b></p>
+          
+          <h5 id="7f2878f3-1cdc-4752-b711-d414bba9757c" class="">The data</h5><p>
+
+          In 1975, Brian Eno and Peter Schmidt published a set of cards designed to help overcome roadblocks in a creative process, and generally stimulate lateral thinking. Each card presents a suggestion or strategy. Here are some examples:</p>
+          <!-- <div class="eno">Emphasize the flaws</div>
+          <div class="eno">Use an unacceptable color</div>
+          <div class="eno">Do nothing for as long as possible</div><p> -->
+          <table><tr>
+            <td id="eno">Emphasize the flaws</td>
+            <td id="eno">Use an unacceptable color</td>
+          </tr><tr>
+            <td id="eno">Do nothing for as long as possible</td>
+            <td id="eno">Take a break</td>
+          </tr></table><p>
+
+          Brian Eno is a producer, so quite a few of the strategies relate to music-making:
+
+          <table><tr>
+            <td id="eno">Fill every beat with something</td>
+            <td id="eno">Shut the door and listen from outside</td>
+          </tr><tr>
+            <td id="eno">Use fewer notes</td>
+            <td id="eno">Repetition is a form of change</td>
+          </tr></table><p>
+
+          There's only about 100 of these in total. That's almost nothing in the world of machine learning datasets. <b>Still, I thought it would be nice to see if we can use a recent language model to generate more of these.</b></p><p>
+
+          I started by getting the list of original strategies <a href="https://github.com/joelparkerhenderson/oblique_strategies">here</a>.
+
+          <h5>The model</h5><p>
+
+          As a little proof of concept, I used <a href="https://talktotransformer.com">Talk to Transformer</a>, prompting it with 10 real strategies at a time (with a dash in front to tell the model it's a list):
+          <pre><code>- Look at a very small object, look at its centre
+- Use an unacceptable color
+- Don't be frightened of cliches
+- Imagine the music as a set of disconnected events
+- Shut the door and listen from outside
+- Use an old idea
+- Reverse
+- Repetition is a form of change
+- Use fewer notes
+- Think of the radio</code></pre><br>
+
+          The output was already pretty good:</p>
+          <table><tr>
+            <td id="eno">Combine styles and layering</td>
+            <td id="eno">Ask the audience to put the pieces together as they go</td>
+          </tr></table><p>
+          (These are the best examples, others didn&#x27;t make much sense)</p><p>
+          I then installed Huggingface's <a href="https://github.com/huggingface/transformers">Transformers</a> library, and tried to do the same with their <a href="https://github.com/huggingface/transformers/blob/master/examples/language-modeling/run_language_modeling.py">language modeling example script</a>. This allowed for experiments with longer prompts and more output. I used the pretrained GPT-2 model, though to be honest, I didn't really compare the results to any other models (I hear you, reviewers...)</p><p>
+          Results were initially less interesting but, after trying a few different settings of the temperature parameter, still OK:</p>
+          <table><tr>
+            <td id="eno">Do nothing on your own</td>
+            <td id="eno">Avoid the action of developing an organisation</td>
+          </tr></table><p>
+
+          <h5>High-quality environmental music</h5>
+
+          After a while I noticed the model tends to drift towards asking questions or handing out generic life advice:</p>
+          <table><tr>
+            <td id="eno">When are your kids going to wake up?</td>
+            <td id="eno">Show strength and develop self-control</td>
+          </tr></table><p>
+          So I decided to steer it a bit more towards music, and other topics related to Eno&#x27;s work.</p><p>
+          First, I prepended, to the prompt, the liner notes from Eno&#x27;s 1978 classic album <a href="https://en.wikipedia.org/wiki/Ambient_1:_Music_for_Airports">Ambient 1: Music for Airports</a>. It's a short piece of text that captures the ideas behind Ambient Music, one of the things Eno is famous for.
+
+          <blockquote> I have begun using the term Ambient Music. An ambience is defined as an atmosphere, or a surrounding influence: a tint. My intention is to produce original pieces ostensibly (but not exclusively) for particular times and situations with a view to building up a small but versatile catalogue of environmental music suited to a wide variety of moods and atmospheres. (...) Ambient Music must be able to accomodate many levels of listening attention without enforcing one in particular; it must be as ignorable as it is interesting.</blockquote>
+
+          It&#x27;s hard to say, but I think this steered the model a bit more towards music, as I&#x27;d hoped. The downside was that it would occasionally break out of the list format I used to separate the strategies, to launch into longer sentences reflecting on life and ambient music, including this surprisingly sensible disclaimer:</p>
+          <table width=340><tr>
+            <td id="eno">Note that, while some of the statements above are simply metaphorical, they can be used to create high-quality environmental music to meet all the demands that our tastes allow us to (...)</td>
+          </tr></table><p>
+          Generally though this didn&#x27;t happen too often as long as the number of strategies shown in the prompt was large enough (30–50).</p><p>
+          The downside of adding more context to prompt was that I wasn&#x27;t sure anymore whether the model&#x27;s 1024-token attention span even allowed it to see any of it, so I started looking at the other natural way to instill some more Eno into my transformer: fine-tuning it.</p><p>
+
+          <h5>Fine-tuning</h5>
+
+          This is very easy, see again the <a href="https://github.com/huggingface/transformers/blob/master/examples/language-modeling/run_language_modeling.py">example script</a> linked above. All you need is data. I found a way to drop a modest <a href="https://en.wikipedia.org/wiki/A_Year_with_Swollen_Appendices">0.8Mb of Brian Eno writing</a> into a text file and trained the model for another 3 short epochs on this data.</p><p>
+
+          Mixed results. A lot of the training data consisted of excerpts from Eno&#x27;s 1995 diary, which turns out to talk about all kinds of topics—letters, performance ideas, airports, charity work—and only a little bit about music. </p><p>
+          You can tell it&#x27;s picked on some of the format: unconditionally generated text tends to have dates in it as little section headings, like the diary. And on some of its content (producing sentences like: "This project has been difficult, but it was something that I have been wanting for quite some time").</p><p>
+
+          Still, some good things came out!</p>
+          <table><tr>
+            <td id="eno">It may be that your are confused about what&#x27;s important</td>
+            <td id="eno">Surrender to your surroundings</td>
+          </tr></table><p>
+
+          </p><h5 id="177cb63b-9f26-4ed1-9b3c-5e537350311c" class="">An infinite Eno</h5><p>
+
+          To my surprise, some look like they could be just as helpful as the original, or at least to a sufficiently open-minded person. Perhaps current language models generate stuff that&#x27;s just the right kind of weird?</p><p>
+
+          In any case, I thought some of the results were good to enought to invest a bit of time figuring out how to share these in a more systematic way, and ended up putting together a Twitter bot. I also added in a bit of image composition to make the result more lively. (It struck me that Oblique Strategies–owners really like to photograph their cards on beautiful wooden surfaces. I guess I would do the same? I don't have a set.) Anyway, follow <a href="https://twitter.com/infinite_eno">@infinite_eno</a> on Twitter for hourly obliqueness.</p><p>
+
+          For now, it's tweeting both fine-tuned and non-fine-tuned strategies. <b>Many of them are still bad.</b> But hidden between the bad ones shines the occasional true Enoism:</p>
+
+          <center>
+          <img src="../figs/card.jpg", width=480 alt="A card on a wooden surface that reads: stop *organising*"><br>
+          <p id="img_caption" width=480>Not a real card</p><br>
+          </center>
+
+          I hadn't messed with bots or even the Twitter API before, so a few Google results came in particularly handy: Molly White's <a href="https://blog.mollywhite.net/how-to-create-a-twitter-bot/#createthetwitterapp">guide to creating a Twitter bot</a>, and the <a href="https://devcenter.heroku.com/articles/scheduler">Heroku scheduler add-on</a>. Let me know me if you want to know more about the set-up.
+
+          </p><h5 id="177cb63b-9f26-4ed1-9b3c-5e537350311c" class="">Some observations</h5><p>
+
+          I mostly learned that you can go a long way without having to do any fine-tuning, you just need to get the prompts right. On the other hand, this didn&#x27;t suprise me too much, having seen some of the things other people have been able to do. In particular, there's the lists <a href="https://www.janelleshane.com">Janelle Shane</a> has been coming up with, they're as uncanny as they are hilarious. Definitely go follow her if you don't already!</p><p>
+
+          Some weeks after I started this project, OpenAI published GPT-3. One of their main findings is that a large pre-trained model can effectively adapt to all kinds of unseen contexts and tasks, without fine-tuning. Google's T5 was first hint of this trend a little before GPT-3. <b>With the little bit of experience I now have in not fine-tuning models, I can definitely see this develop further still.</b></p><p>
+
+          Finally, I can now also confirm that, yes, the &#129303;&nbsp;Transformers library is super helpful, at least for this kind of project. They did a great job making some of the most complex and powerful machine learning technologies accessible with very few headaches.</p><p>
+
+          All this time, I'm aware that I might not be the first to try and generate Oblique Strategies. On this, however, can only agree with GPT-2 Eno:
+          <table width=340><tr>
+            <td id="eno">Don't count on it being original</td>
+          </tr></table><p>
+
+
+        <br>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p>Published with <a href="https://pages.github.com" target="_blank">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
